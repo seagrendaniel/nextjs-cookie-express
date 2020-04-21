@@ -4,7 +4,9 @@
   "description": "cookie authentication with Next.js",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "babel-version": "babel --version",
+    "dev": "nodemon server.js"
   },
   "author": "Dan Seagren",
   "license": "ISC",
@@ -13,5 +15,10 @@
     "next": "^9.3.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-airbnb": "^5.0.0",
+    "nodemon": "^2.0.3"
   }
 }
