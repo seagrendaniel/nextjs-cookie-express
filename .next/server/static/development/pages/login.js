@@ -104,18 +104,21 @@ module.exports =
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _lib_auth__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../lib/auth */ "./lib/auth.js");
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
 
 class LoginForm extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
   constructor(...args) {
     super(...args);
 
     _defineProperty(this, "state", {
-      email: '',
-      password: ''
+      email: 'Rey.Padberg@karina.biz',
+      password: 'ambrose.net'
     });
 
     _defineProperty(this, "handleChange", event => {
@@ -125,23 +128,33 @@ class LoginForm extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
     });
 
     _defineProperty(this, "handleSubmit", event => {
+      const {
+        email,
+        password
+      } = this.state;
       event.preventDefault();
-      console.log(this.state);
+      Object(_lib_auth__WEBPACK_IMPORTED_MODULE_1__["loginUser"])(email, password);
     });
   }
 
   render() {
+    const {
+      email,
+      password
+    } = this.state;
     return __jsx("form", {
       onSubmit: this.handleSubmit
     }, __jsx("div", null, __jsx("input", {
       type: "email",
       name: "email",
       placeholder: "email",
+      value: email,
       onChange: this.handleChange
     })), __jsx("div", null, __jsx("input", {
-      type: "text",
+      type: "password",
       name: "password",
       placeholder: "password",
+      value: password,
       onChange: this.handleChange
     })), __jsx("div", null, __jsx("button", {
       type: "submit"
@@ -151,6 +164,31 @@ class LoginForm extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (LoginForm);
+
+/***/ }),
+
+/***/ "./lib/auth.js":
+/*!*********************!*\
+  !*** ./lib/auth.js ***!
+  \*********************/
+/*! exports provided: loginUser */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "loginUser", function() { return loginUser; });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "axios");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+
+const loginUser = async (email, password) => {
+  const {
+    data
+  } = await axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/login', {
+    email,
+    password
+  });
+  console.log(data);
+};
 
 /***/ }),
 
@@ -185,6 +223,17 @@ function Login() {
 
 module.exports = __webpack_require__(/*! /Users/danielseagren/Code-Stuff/nextjs-practice/next-cookie-express/pages/login.js */"./pages/login.js");
 
+
+/***/ }),
+
+/***/ "axios":
+/*!************************!*\
+  !*** external "axios" ***!
+  \************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("axios");
 
 /***/ }),
 
